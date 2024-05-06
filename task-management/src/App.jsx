@@ -14,6 +14,7 @@ function App() {
     ,
   ]);
   const [title, setTitle] = useState("");
+  const [statusedit, setStatusedit] = useState("");
 
   function deletetask(id) {
     console.log(id);
@@ -21,11 +22,30 @@ function App() {
     setTask(result_delete);
   }
 
+  function edittask(id) {
+    console.log(id);
+    setStatusedit(id);
+    const edittitle = task.find((item) => item.id === id)
+    setTitle(edittitle.title)
+  }
+
   function savetask(e) {
     e.preventDefault();
     if (!title) {
       alert("กรุณากรอกข้อมูล")
-    } else {
+    } else if (statusedit) {
+      console.log(statusedit);
+      const resultedit = task.map((item) => {
+        if (item.id === statusedit) {
+          return { ...item, title: title }
+        }
+        return item
+      })
+      setTask(resultedit)
+      setStatusedit('')
+      setTitle('')
+    }
+    else {
       const newTask =
       {
         id: Math.floor(Math.random() * 1000),
@@ -35,19 +55,16 @@ function App() {
       console.log(newTask);
       setTitle("")
     }
-
-
-
   }
 
   return (
     <div className='App'>
       <Header></Header>
       <div className="container">
-        <AddForm title={title} setTitle={setTitle} savetask={savetask}></AddForm>
+        <AddForm title={title} setTitle={setTitle} savetask={savetask} statusedit={statusedit}></AddForm>
         {task.map((item) => {
           return (
-            <Item key={item.id} data={item} deletetask={deletetask}></Item>
+            <Item key={item.id} data={item} deletetask={deletetask} edittask={edittask}></Item>
           );
         })}
       </div>
