@@ -1,12 +1,15 @@
 import React from 'react'
+import "../css/AddForm.css"
 
 function AddForm() {
     return (
         <>
-            <h2>แบบฟอร์มจัดการงาน</h2>
-            <form action="form-group">
-                <input type="text" className='textinput' />
-                <button type="submit" className='btn'>เพิ่มข้อมูล</button>
+            <h2>แอปจัดการงาน</h2>
+            <form>
+                <div className="form-control">
+                    <input type="text" className='textinput' />
+                    <button type="submit" className='btn-submit'>เพิ่มข้อมูล</button>
+                </div>
             </form>
         </>
     )
