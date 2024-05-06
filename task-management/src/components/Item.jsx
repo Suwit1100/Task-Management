@@ -1,12 +1,13 @@
 import React from 'react'
 import '../css/Item.css'
-function Item() {
+function Item(porps) {
+    const { data,deletetask } = porps;
     return (
         <div className='list-item'>
-            <p>รายการที่ 1</p>
+            <p>{data.title}</p>
             <div className="btn-group">
                 <button className='btn-edit'>แก้ไข</button>
-                <button className='btn-delete'>ลบ</button>
+                <button className='btn-delete' onClick={()=>deletetask(data.id)}>ลบ</button>
             </div>
         </div>
     )
