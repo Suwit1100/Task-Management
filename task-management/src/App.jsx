@@ -1,18 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import AddForm from './components/AddForm'
 import Item from './components/Item'
 
 function App() {
-  const [task, setTask] = useState([
-    { id: 1, title: "แมว" }
-    ,
-    { id: 2, title: "หมา" }
-    ,
-    { id: 3, title: "ไก่" }
-    ,
-  ]);
+  const [task, setTask] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
   const [title, setTitle] = useState("");
   const [statusedit, setStatusedit] = useState("");
 
@@ -56,6 +51,10 @@ function App() {
       setTitle("")
     }
   }
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(task))
+  }, [task])
 
   return (
     <div className='App'>
