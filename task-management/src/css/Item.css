@@ -22,6 +22,7 @@
     border: transparent;
     max-width: 50px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .btn-delete {
@@ -30,4 +31,6 @@
     border-radius: 5px;
     border: transparent;
     min-width: 50px;
+    cursor: pointer;
+
 }
