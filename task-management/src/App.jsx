@@ -10,6 +10,7 @@ function App() {
   );
   const [title, setTitle] = useState("");
   const [statusedit, setStatusedit] = useState("");
+  const [theme, setTheme] = useState("light");
 
   function deletetask(id) {
     console.log(id);
@@ -57,8 +58,8 @@ function App() {
   }, [task])
 
   return (
-    <div className='App'>
-      <Header></Header>
+    <div className={'App '+theme}>
+      <Header setTheme={setTheme} theme={theme}></Header>
       <div className="container">
         <AddForm title={title} setTitle={setTitle} savetask={savetask} statusedit={statusedit}></AddForm>
         {task.map((item) => {
@@ -67,7 +68,7 @@ function App() {
           );
         })}
       </div>
-    </div>
+    </div >
   )
 }
 
