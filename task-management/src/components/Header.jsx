@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Header.css'
-
+import { FaSun } from "react-icons/fa";
+import { MdNightsStay } from "react-icons/md";
 function Header(props) {
     const { theme, setTheme } = props;
     function toggleTheme() {
@@ -17,7 +18,7 @@ function Header(props) {
             </div>
             <div className="theme-container">
                 <span>{theme === 'light' ? 'โหมดกลางวัน' : 'โหมดกลางคืน'}</span>
-                <span className="icon" role='button' onClick={toggleTheme}>สลับ</span>
+                <span className="icon" role='button' onClick={toggleTheme}>{theme === 'light' ? <FaSun /> : <MdNightsStay />}</span>
             </div>
         </header>
     )
