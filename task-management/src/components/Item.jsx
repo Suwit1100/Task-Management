@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/Item.css'
+import { IconName } from "react-icons/bs";
 function Item(porps) {
     const { data, deletetask, edittask } = porps;
     return (
